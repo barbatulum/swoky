@@ -1,0 +1,25 @@
+- [ ] _constants
+- [ ] _anim
+  - [ ] curves
+  - [ ] gui
+  - [ ] key_recording
+  - [ ] keys
+  - [ ] ls
+  - [ ] select
+  - [ ] setkey
+  - [ ] tangent
+- [ ] _hotkey
+    - [ ] assign
+    - [ ] contextual_shortcuts
+    - [ ] shortcut
+- [ ] _library
+  - [ ] ui
+    - [X] layer
+    - [ ] maya_gui
+    - [ ] panel_tools
+  - [ ] camera
+  - [ ] lssl
+  - [ ] manipulators
+  - [ ] misc
+  - [ ] playblast
+  - [ ] time_control
