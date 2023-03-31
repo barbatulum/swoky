@@ -102,6 +102,7 @@ def create_look_at_locator(name=None, at='aim'):
             front: Distance from the camera(in front of it)
             aim: Center of interest
     :return:
+    # todo: xform is too slow, try matrices
     """
     panel_camera = get_panel_camera()
     if not panel_camera:

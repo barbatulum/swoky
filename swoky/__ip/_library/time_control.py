@@ -41,7 +41,6 @@ def toggle_playback_speed():
         next_setting_index = const.PLAYBACK_SPEED_STEPS.index(current_setting) + 1
         if next_setting_index >= len(const.PLAYBACK_SPEED_STEPS):
             next_setting_index = 0
-    print("next_setting_index", next_setting_index)
     next_setting = const.PLAYBACK_SPEED_STEPS[next_setting_index]
     cmds.playbackOptions(
         e=True,

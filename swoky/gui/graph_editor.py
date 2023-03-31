@@ -1,13 +1,13 @@
 from maya import cmds
 
-from swoky.constants import Panel
 
+from ..anim.curves import get_selected_key_frames
 from ..constants import FixedGui, GEState, Panel
 from ..preferences import GE_FALLBACK_ORDER
 from .panel import get_panel_info, get_visible_panels_of_type
 
 
-def get_a_graph_editor(order=GE_FALLBACK_ORDER,vis_ge_index=-1):
+def get_a_graph_editor(order=GE_FALLBACK_ORDER, vis_ge_index=-1):
     """
     Get a graph editor by the given fallback order.
     (
@@ -220,7 +220,7 @@ def select_nodes_in_outliner(panel=None, keep_selection=True):
     # todo:
     pre_selection = None
     if keep_selection:
-        pre_selection = ls.get_selected_key_frames() or {}
+        pre_selection = get_selected_key_frames() or {}
 
     panel_info = get_panel_or_ge_panel(panel)
     if not panel_info:
@@ -238,3 +238,23 @@ def select_nodes_in_outliner(panel=None, keep_selection=True):
             for frame in frames:
                 cmds.selectKey(curve, add=True, t=(frame,))
     return ge_objects
+
+
+def get_shown_curve(graph_editor_ed):
+    """
+    Get shown curves of the given graph editor
+    """
+    return cmds.animCurveEditor(
+        graph_editor_ed, q=True, curvesShown=True
+    ) or []
+
+
+def get_shown_curve_from_graph_ed(order=GE_FALLBACK_ORDER, vis_ge_index=-1):
+    """
+    Get shown curves of the graph editor from get_a_graph_editor.
+    """
+    working_graph_editor = get_a_graph_editor(
+        order=order, vis_ge_index=vis_ge_index
+    )
+    if working_graph_editor:
+        return get_shown_curve(working_graph_editor)

@@ -3,7 +3,7 @@ from ..ui import panel_tools
 from .. import constants as const
 
 
-def select_visible_keys_at_frame(frame):
+def select_visible_keys_at_frame(frame, select=True):
     """
     # selectVisKeyAtCurrentTime selectAllVisibleKeys
     If no frame specified and at_current is True: select all visible curves
@@ -17,7 +17,6 @@ def select_visible_keys_at_frame(frame):
     panel, _, editor = panel_tools.get_a_graph_editor()
     if not editor:
         return
-
     shown_curves = cmds.animCurveEditor(editor, q=True, curvesShown=True)
 
     # todo: is this required?
